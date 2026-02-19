@@ -123,7 +123,7 @@ func TestError(t *testing.T) {
 	ctx := context.Background()
 	fields := Fields{"request_id": "abc-123"}
 	Err := errors.New("something went wrong")
-	Error(ctx, "error message", &fields, Err)
+	Error(ctx, "error message", Err, &fields)
 
 	var entry map[string]interface{}
 	if err := json.Unmarshal(buf.Bytes(), &entry); err != nil {

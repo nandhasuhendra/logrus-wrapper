@@ -80,7 +80,7 @@ func Info(ctx context.Context, msg string, fields *Fields) {
 	generateLogger(ctx, fields).WithFields(*callerFields).Info(msg)
 }
 
-func Error(ctx context.Context, msg string, fields *Fields, err error) {
+func Error(ctx context.Context, msg string, err error, fields *Fields) {
 	callerFields := getCaller()
 	generateLogger(ctx, fields).WithFields(*callerFields).WithError(err).Error(msg)
 }
