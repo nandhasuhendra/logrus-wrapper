@@ -48,12 +48,12 @@ func Setup(level string, isProduction bool) {
 }
 
 func generateLogger(ctx context.Context, fields *Fields) *logrus.Entry {
-	entry := log.WithFields(*fields)
+	entry := logrus.WithContext(ctx)
 	if fields != nil {
-		entry.WithFields(*fields)
+		entry = entry.WithFields(*fields)
 	}
 
-	return entry.WithContext(ctx)
+	return entry
 }
 
 func getCaller() *logrus.Fields {
