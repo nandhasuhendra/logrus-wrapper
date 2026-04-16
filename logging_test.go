@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
+	"os"
 	"strings"
 	"sync"
 	"testing"
@@ -27,7 +28,7 @@ func captureOutput() *bytes.Buffer {
 
 // restoreOutput restores logger output to os.Stdout.
 func restoreOutput() {
-	log.SetOutput(nil) // logrus falls back to os.Stderr when nil; restored via os.Stdout below
+	log.SetOutput(os.Stdout) // fix: was log.SetOutput(nil) which falls back to stderr, not stdout
 	log.SetFormatter(&logrus.JSONFormatter{})
 }
 

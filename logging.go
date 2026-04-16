@@ -48,7 +48,7 @@ func Setup(level string, isProduction bool) {
 }
 
 func generateLogger(ctx context.Context, fields *Fields) *logrus.Entry {
-	entry := logrus.WithContext(ctx)
+	entry := log.WithContext(ctx)
 	if fields != nil {
 		entry = entry.WithFields(*fields)
 	}
